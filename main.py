@@ -40,15 +40,15 @@ def fijos(filtros, vuelta):
 def celulares(filtros, vuelta):
     if filtros == "":
         myquery = conf.MY_QUERY
-        count = mycol.count(myquery)
+        # count = mycol.count(myquery)
         x = mycol.find(myquery)
     else:
         # myquery = conf.MY_QUERY
-        count = mycol.count(filtros)
+        # count = mycol.count(filtros)
         x = mycol.find(filtros)
     x2 = ""
     num = ""
-    print(count)
+    # print(count)
     if vuelta == 0:
         f = open("./CSVs/" + conf.NAME_CSV_CELULARES + ".csv", "w")
         f.write("Numero" + "\n")
@@ -81,7 +81,7 @@ def NumerosCeluares():
                 for row in reader:
                     filtros = {"provincia": conf.LOCALIDAD,
                                "$or": [{"localidad": row[0]}, {"localidad": row[0].upper()}]}
-                    print(filtros)
+                    print("Mongo: " + str(filtros))
                     celulares(filtros, vuelta)
                     vuelta += 1
         else:
@@ -98,7 +98,7 @@ def NumerosFijos():
                 for row in reader:
                     filtros = "Provincia = '" + conf.LOCALIDAD + "' AND (Localidad = '" + row[
                         0] + "' OR Localidad = '" + row[0].upper() + "')"
-                    print(filtros)
+                    print("SQL: " + filtros)
                     fijos(filtros, vuelta)
                     vuelta += 1
 
