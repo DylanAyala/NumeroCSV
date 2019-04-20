@@ -11,7 +11,7 @@ mydb = myclient[conf.DB_NAME]
 mycol = mydb[conf.COLLECTION]
 
 mydb = mysql.connector.connect(
-    host="localHost",
+    host="localhost",
     user="root",
     passwd="",
     database='fijos'
@@ -72,32 +72,34 @@ def celulares(filtros, vuelta):
 
 
 def NumerosCeluares():
-    filtros = ""
-    vuelta = 0
-    if path.exists('./CSVConFiltros/test1.csv'):
-        with open('./CSVConFiltros/test1.csv', newline='') as File:
-            reader = csv.reader(File)
-            for row in reader:
-                filtros = {"provincia": "SANTA FE", "$or": [{"localidad": row[0]}, {"localidad": row[0].upper()}]}
-                print(filtros)
-                celulares(filtros, vuelta)
-                vuelta += 1
-    else:
-        celulares(filtros, vuelta)
+    if conf.CELULARES == 'ACTIVO':
+        filtros = ""
+        vuelta = 0
+        if path.exists('./CSVConFiltros/test1.csv'):
+            with open('./CSVConFiltros/test1.csv', newline='') as File:
+                reader = csv.reader(File)
+                for row in reader:
+                    filtros = {"provincia": "SANTA FE", "$or": [{"localidad": row[0]}, {"localidad": row[0].upper()}]}
+                    print(filtros)
+                    celulares(filtros, vuelta)
+                    vuelta += 1
+        else:
+            celulares(filtros, vuelta)
 
 
 def NumerosFijos():
-    filtros = ""
-    vuelta = 0
-    if path.exists('./CSVConFiltros/test1.csv'):
-        with open('./CSVConFiltros/test1.csv', newline='') as File:
-            reader = csv.reader(File)
-            for row in reader:
-                filtros = "Provincia = 'Santa Fe' AND (Localidad = '" + row[0] + "' OR Localidad = '" + row[
-                    0].upper() + "')"
-                print(filtros)
-                fijos(filtros, vuelta)
-                vuelta += 1
+    if conf.FIJOS == 'ACTIVO':
+        filtros = ""
+        vuelta = 0
+        if path.exists('./CSVConFiltros/test1.csv'):
+            with open('./CSVConFiltros/test1.csv', newline='') as File:
+                reader = csv.reader(File)
+                for row in reader:
+                    filtros = "Provincia = 'Santa Fe' AND (Localidad = '" + row[0] + "' OR Localidad = '" + row[
+                        0].upper() + "')"
+                    print(filtros)
+                    fijos(filtros, vuelta)
+                    vuelta += 1
 
 
 t = Thread(target=NumerosFijos)

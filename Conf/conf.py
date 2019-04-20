@@ -14,6 +14,10 @@ NAME_CSV_FIJOS = "FijosMacri"
 
 # My sql database
 HOST = "localhost",
-USER = "root",
+USER = "admin",
 PASSWORD = ""
 DATA_BASE_SQL = "fijos"
+
+# ACTIVOS
+CELULARES = "a"
+FIJOS = "ACTIVO"
