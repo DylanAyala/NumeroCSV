@@ -11,7 +11,7 @@ mydb = myclient[conf.DB_NAME]
 mycol = mydb[conf.COLLECTION]
 
 mydb = mysql.connector.connect(
-    host="localHosta",
+    host="localHost",
     user="root",
     passwd="",
     database='fijos'
@@ -79,7 +79,8 @@ def NumerosCeluares():
             with open('./CSVConFiltros/test1.csv', newline='') as File:
                 reader = csv.reader(File)
                 for row in reader:
-                    filtros = {"provincia": "SANTA FE", "$or": [{"localidad": row[0]}, {"localidad": row[0].upper()}]}
+                    filtros = {"provincia": conf.LOCALIDAD,
+                               "$or": [{"localidad": row[0]}, {"localidad": row[0].upper()}]}
                     print(filtros)
                     celulares(filtros, vuelta)
                     vuelta += 1
@@ -95,8 +96,8 @@ def NumerosFijos():
             with open('./CSVConFiltros/test1.csv', newline='') as File:
                 reader = csv.reader(File)
                 for row in reader:
-                    filtros = "Provincia = 'Santa Fe' AND (Localidad = '" + row[0] + "' OR Localidad = '" + row[
-                        0].upper() + "')"
+                    filtros = "Provincia = '" + conf.LOCALIDAD + "' AND (Localidad = '" + row[
+                        0] + "' OR Localidad = '" + row[0].upper() + "')"
                     print(filtros)
                     fijos(filtros, vuelta)
                     vuelta += 1

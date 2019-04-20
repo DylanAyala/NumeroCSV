@@ -1,4 +1,4 @@
-DATA_BASE = "localHost"
+DATA_BASE = "localhost"
 DB_NAME = "celulares"
 COLLECTION = "celulares"
 
@@ -8,6 +8,9 @@ MY_QUERY = {"provincia": "SANTA FE", "$or": [{"localidad": "Fray Luis Beltran"},
                                              {"localidad": "PUERTO GRAL SAN MARTIN"},
                                              {"localidad": "CAPITAN BERMUDEZ"},
                                              ]}
+# Provincia para Cuendo se carga un csv con las localidades
+LOCALIDAD = "SANTA FE"
+
 # Nombre de csv. Recordar que si no se cambia se pisa el anterior
 NAME_CSV_CELULARES = "CelularesMacri"
 NAME_CSV_FIJOS = "FijosMacri"
