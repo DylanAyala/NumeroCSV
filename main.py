@@ -11,10 +11,10 @@ mydb = myclient[conf.DB_NAME]
 mycol = mydb[conf.COLLECTION]
 
 mydb = mysql.connector.connect(
-    host=conf.HOST,
-    user=conf.USER,
-    passwd=conf.PASSWORD,
-    database="fijos"
+    host="192.168.33.80",
+    user="soporte",
+    passwd="Soporte.3135",
+    database='fijos'
 )
 
 
@@ -28,7 +28,12 @@ def fijos(filtros, vuelta):
     else:
         f = open("./CSVs/" + conf.NAME_CSV_FIJOS + ".csv", "a")
     for x1 in myresult:
-        f.write(x1["Telefono"] + "\n")
+        x1 = str(x1)
+        x1 = x1.replace("(", "")
+        x1 = x1.replace(")", "")
+        x1 = x1.replace(",", "")
+        f.write(x1 + "\n")
+    # print(x1)
     f.close()
 
 
@@ -88,10 +93,14 @@ def NumerosFijos():
         with open('./CSVConFiltros/test1.csv', newline='') as File:
             reader = csv.reader(File)
             for row in reader:
-                filtros = "Provincia = 'Santa Fe' AND (Localidad CONTAINS " + row[0] + ")"
+                filtros = "Provincia = 'Santa Fe' AND (Localidad = '" + row[0] + "' OR Localidad = '" + row[
+                    0].upper() + "')"
                 print(filtros)
                 fijos(filtros, vuelta)
                 vuelta += 1
 
-# t = Thread(target=NumerosFijos)
-# t.start()
+
+t = Thread(target=NumerosFijos)
+t2 = Thread(target=NumerosCeluares)
+t.start()
+t2.start()

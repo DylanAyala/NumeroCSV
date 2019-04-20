@@ -10,10 +10,10 @@ MY_QUERY = {"provincia": "SANTA FE", "$or": [{"localidad": "Fray Luis Beltran"},
                                              ]}
 # Nombre de csv. Recordar que si no se cambia se pisa el anterior
 NAME_CSV_CELULARES = "CelularesMacri"
-NAME_CSV_FIJOS = "FijosSeguridad"
+NAME_CSV_FIJOS = "FijosMacri"
 
 # My sql database
-HOST = "192.168.33.80",
-USER = "soporte",
-PASSWORD = "Soporte.3135"
+HOST = "localhost",
+USER = "root",
+PASSWORD = ""
 DATA_BASE_SQL = "fijos"
