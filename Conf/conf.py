@@ -1,4 +1,4 @@
-DATA_BASE = "localhost"
+DATA_BASE = "localHost"
 DB_NAME = "celulares"
 COLLECTION = "celulares"
 
@@ -19,5 +19,5 @@ PASSWORD = ""
 DATA_BASE_SQL = "fijos"
 
 # ACTIVOS
-CELULARES = "a"
+CELULARES = "ACTIVO"
 FIJOS = "ACTIVO"
