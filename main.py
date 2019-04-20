@@ -12,7 +12,7 @@ mydb = myclient[conf.DB_NAME]
 mycol = mydb[conf.COLLECTION]
 
 mydb = mysql.connector.connect(
-    host="localHost",
+    host="locaHost",
     user="root",
     passwd="",
     database='fijos'
@@ -114,4 +114,5 @@ t2.start()
 t.join()
 t2.join()
 
-os.rename("./CSVConFiltros/test1.csv", "./Procesados/test1.csv")
+if path.exists('./CSVConFiltros/test1.csv'):
+    os.rename("./CSVConFiltros/test1.csv", "./Procesados/test1.csv")
