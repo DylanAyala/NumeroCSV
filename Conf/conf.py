@@ -1,4 +1,4 @@
-DATA_BASE = "localhost"
+DATA_BASE = "localHost"
 DB_NAME = "celulares"
 COLLECTION = "celulares"
 

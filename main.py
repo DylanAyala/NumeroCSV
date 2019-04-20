@@ -4,7 +4,7 @@ import re
 import csv
 import os.path as path
 import mysql.connector
-import shutil
+import os
 from threading import Thread
 
 myclient = pymongo.MongoClient(conf.DATA_BASE)
@@ -111,5 +111,7 @@ t = Thread(target=NumerosFijos)
 t2 = Thread(target=NumerosCeluares)
 t.start()
 t2.start()
+t.join()
+t2.join()
 
-shutil.move("./CSVConFiltros/test1.csv", "./Procesados/test1.csv")
+os.rename("./CSVConFiltros/test1.csv", "./Procesados/test1.csv")
