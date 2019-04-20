@@ -41,9 +41,10 @@ def celulares(filtros, vuelta):
     if filtros == "":
         myquery = conf.MY_QUERY
         # count = mycol.count(myquery)
+        print("MONGO: " + str(myquery))
         x = mycol.find(myquery)
     else:
-        # myquery = conf.MY_QUERY
+        myquery = conf.MY_QUERY
         # count = mycol.count(filtros)
         x = mycol.find(filtros)
     x2 = ""
@@ -101,6 +102,8 @@ def NumerosFijos():
                     print("SQL: " + filtros)
                     fijos(filtros, vuelta)
                     vuelta += 1
+        else:
+            pass
 
 
 t = Thread(target=NumerosFijos)
