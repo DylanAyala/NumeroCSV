@@ -1,4 +1,4 @@
-DATA_BASE = "mongodb://soporte:soporte.3135@192.168.33.113/?authSource=celulares&authMechanism=SCRAM-SHA-1"
+DATA_BASE = "localhost"
 DB_NAME = "celulares"
 COLLECTION = "celulares"
 

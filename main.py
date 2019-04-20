@@ -11,9 +11,9 @@ mydb = myclient[conf.DB_NAME]
 mycol = mydb[conf.COLLECTION]
 
 mydb = mysql.connector.connect(
-    host="192.168.33.80",
-    user="soporte",
-    passwd="Soporte.3135",
+    host="localHost",
+    user="root",
+    passwd="",
     database='fijos'
 )
 
