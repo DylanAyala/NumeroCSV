@@ -12,7 +12,7 @@ mydb = myclient[conf.DB_NAME]
 mycol = mydb[conf.COLLECTION]
 
 mydb = mysql.connector.connect(
-    host="locaHost",
+    host="localHost",
     user="root",
     passwd="",
     database='fijos'
@@ -77,8 +77,8 @@ def NumerosCeluares():
     if conf.CELULARES == 'ACTIVO':
         filtros = ""
         vuelta = 0
-        if path.exists('./CSVConFiltros/test1.csv'):
-            with open('./CSVConFiltros/test1.csv', newline='') as File:
+        if path.exists('./CSVConFiltros/' + conf.NAME_CSV_FILTROS + '.csv'):
+            with open('./CSVConFiltros/' + conf.NAME_CSV_FILTROS + '.csv', newline='') as File:
                 reader = csv.reader(File)
                 for row in reader:
                     filtros = {"provincia": conf.LOCALIDAD,
@@ -94,8 +94,8 @@ def NumerosFijos():
     if conf.FIJOS == 'ACTIVO':
         filtros = ""
         vuelta = 0
-        if path.exists('./CSVConFiltros/test1.csv'):
-            with open('./CSVConFiltros/test1.csv', newline='') as File:
+        if path.exists('./CSVConFiltros/' + conf.NAME_CSV_FILTROS + '.csv'):
+            with open('./CSVConFiltros/' + conf.NAME_CSV_FILTROS + '.csv', newline='') as File:
                 reader = csv.reader(File)
                 for row in reader:
                     filtros = "Provincia = '" + conf.LOCALIDAD + "' AND (Localidad = '" + row[
@@ -114,5 +114,5 @@ t2.start()
 t.join()
 t2.join()
 
-if path.exists('./CSVConFiltros/test1.csv'):
-    os.rename("./CSVConFiltros/test1.csv", "./Procesados/test1.csv")
+if path.exists('./CSVConFiltros/' + conf.NAME_CSV_FILTROS + '.csv'):
+    os.rename("./CSVConFiltros/" + conf.NAME_CSV_FILTROS + ".csv", "./Procesados/" + conf.NAME_CSV_FILTROS + ".csv")

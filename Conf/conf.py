@@ -1,4 +1,4 @@
-DATA_BASE = "localHost"
+DATA_BASE = "localhost"
 DB_NAME = "celulares"
 COLLECTION = "celulares"
 
@@ -14,6 +14,7 @@ LOCALIDAD = "SANTA FE"
 # Nombre de csv. Recordar que si no se cambia se pisa el anterior
 NAME_CSV_CELULARES = "CelularesMacri"
 NAME_CSV_FIJOS = "FijosMacri"
+NAME_CSV_FILTROS = "test1"
 
 # My sql database
 HOST = "localhost",
